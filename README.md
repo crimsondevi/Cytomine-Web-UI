@@ -1,35 +1,10 @@
 # Cytomine front-end
 
-## Presentation
-The Cytomine-WebUI is the official front-end for Cytomine, developed in VueJS.  
-You will find more information about the Cytomine project on the [website](https://www.cytomine.org).  
-You can also find, on our official documentation [how to install it](https://documentation.cytomine.org/How-to-install-Cytomine?structure=Admins) and [an user guide](https://documentation.cytomine.org/UsersV2?structure=UsersV2).
-
-The main features of this new front-end are :
-* A complete new Cytomine experience.
-* Support of internationalization i.e. multiple languages (English and French currently available). You can contribute by adding new languages (See [here](https://documentation.cytomine.org/How-to-contribute?structure=Contributors).
-* Reactive application.
-* New lists of project, image, job with sorting, searching and filtering.
-* Display details of images, jobs and projects in all the lists.
-* A complete refactoring of the image viewer to focus on the main part : the image. The other components have been developed to be discreet and can be fold in if necessary. The viewer is now compatible with tablets.
-* Rotation of images at any specific angle.
-* Set up of magnification and resolution of each image directly from the viewer or the image list.
-* Zoom beyond the maximum resolution of an image by activating a digital zoom.
-* Display more than one image into a viewer for efficient comparison. These opened images can be linked to synchronize your navigation and allow you to easily browse though multiple images at once.
-* Draw annotations with a preselected term.
-* Opacity of each term color can be specificly set up.
-* Straight lines and Free hand lines annotations are now available.
-* Brightness, Contrast, Saturation and Hue of a image can be set up during visualization.
-* The Workspace feature allows you to open multiple projects and image and go back to a currently opened image or project.
-* A quick search across the platform is available in the top navigation bar.
-* An advanced panel allowing you to search all across the platform.
-* Set for projects default annotation layers and default property which will be displayed at the opening of an image.
-* Follow in real time an other user viewer or part of viewer, only if this user have allowed the Cytomine platform to broadcast it.
-* Simplification of user managment in projects.
-* Change the ontology of a project is now possible.
-* Edition of ontology terms had been simplified.
-* Adding attached files to a project, a image, or an annotation is now possible.
-* Manage files in storage is enriched by total size on disk and list of sub images for archived or converted images.
+## Bachelor Thesis Fork
+This is a fork of the Cytomine-Web-UI. 
+We are working on a Bachelors thesis where we are implementing a quality assurance tool into Cytomine.
+The purpose of the tool is to let patholigsts compare different images and give them a score
+based on their quality for the purpose of diagnosis.
 
 
 ## Installation
