@@ -39,6 +39,8 @@ import AdminPanel from './components/admin/AdminPanel.vue';
 import UserActivity from './components/user/UserActivity.vue';
 import PageNotFound from './components/PageNotFound.vue';
 import SoftwareInformation from './components/software/SoftwareInformation.vue';
+import Compare from './components/compare/Compare.vue';
+import CompareList from './components/compare/CompareList.vue';
 
 // Define routes
 const routes = [
@@ -49,6 +51,10 @@ const routes = [
   {
     path: '/projects',
     component: ListProjects,
+  },
+  {
+    path: '/compare-list',
+    component: CompareList,
   },
   {
     path: '/storage',
@@ -121,6 +127,10 @@ const routes = [
       {
         path: 'configuration',
         component: ProjectConfiguration
+      },
+      {
+        path: 'compare',
+        component: Compare
       },
       {
         path: '*',

@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2009-2020. Authors: see NOTICE file.
+  <!-- Copyright (c) 2009-2020. Authors: see NOTICE file.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -43,6 +43,10 @@
       <router-link to="/software" class="navbar-item">
         <i class="fas fa-code"></i>
         {{ $t('algorithms') }}
+      </router-link>
+      <router-link to="/compare-list" class="navbar-item">
+        <i class="fas fa-balance-scale-left"></i>
+        {{ $t('Compare') }}
       </router-link>
       <router-link v-if="currentUser.adminByNow" to="/admin" class="navbar-item">
         <i class="fas fa-wrench"></i>
