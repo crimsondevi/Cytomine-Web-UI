@@ -23,9 +23,12 @@
     <div v-else-if="!loading" class="panel">
       <p class="panel-heading">
         {{ $t("projects") }}
-      </p>
-  </div>
-  <cytomine-table
+      <button v-if="!currentUser.guestByNow" class="button is-link" @click="creationModal = true">
+        {{$t('new-project')}}
+      </button>
+    </p>
+    <div class="panel-block"> 
+      <cytomine-table
         :collection="projectCollection"
         class="table-projects"
         :currentPage.sync="currentPage"
@@ -57,32 +60,23 @@
             <router-link :to="`/project/${project.id}/images`">{{ project.numberOfImages }}</router-link>
           </b-table-column>
 
-          <b-table-column field="numberOfAnnotations" :label="$t('user-annotations')" centered sortable width="150">
-            <router-link :to="`/project/${project.id}/annotations?type=user`">
-              {{ project.numberOfAnnotations }}
-            </router-link>
-          </b-table-column>
-
-          <b-table-column field="numberOfJobAnnotations" :label="$t('analysis-annotations')" centered sortable width="150">
-            <router-link :to="`/project/${project.id}/annotations?type=algo`">
-              {{ project.numberOfJobAnnotations }}
-            </router-link>
-          </b-table-column>
-
-          <b-table-column field="numberOfReviewedAnnotations" :label="$t('reviewed-annotations')" centered sortable width="150">
-            <router-link :to="`/project/${project.id}/annotations?type=reviewed`">
-              {{ project.numberOfReviewedAnnotations }}
-            </router-link>
-          </b-table-column>
-
           <b-table-column field="lastActivity" :label="$t('last-activity')" centered sortable width="180">
             {{ Number(project.lastActivity) | moment('ll') }}
+          </b-table-column>
+
+
+          <!-- implement field, label, and variable -->
+          <b-table-column field="numberOfComparisons" :label="$t('comparisons')" centered sortable width="180">
+            <!-- wrap in router link to /project/${project.id}/comparisons when implemented -->
+            <!-- {{ Number(project.comparisons) | moment('ll') }} -->
+            0
           </b-table-column>
 
           <b-table-column label=" " centered width="150">
               <!-- Change to a button that navigates to the project-id compare menu-->
             <router-link :to="`/project/${project.id}`" class="button is-small is-link">
-              {{$t('button-open')}}
+              <!-- {{$t('button-Compare')}} change to a translatable string -->
+              Begin Compare
             </router-link>
           </b-table-column>
         </template>
@@ -102,7 +96,9 @@
             <p>{{$t('no-project')}}</p>
           </div>
         </template>
-      </cytomine-table>
+        </cytomine-table>
+      </div>
+    </div>
   </div>
 </template>
 
