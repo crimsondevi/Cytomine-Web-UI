@@ -44,6 +44,15 @@
           {{ $t('activity') }}
         </a>
       </router-link>
+
+      <!-- Add v-if for tabDisplayed('Compare') -->
+      <router-link  tag="li" :to="`/project/${project.id}/compare`">
+        <a>
+          <i class="fas fa-balance-scale-left"></i>
+          {{ $t('Compare') }}
+        </a>
+      </router-link>
+
       <router-link v-if="isTabDisplayed('information')" tag="li" :to="`/project/${project.id}/information`">
         <a>
           <i class="fas fa-info-circle"></i>
