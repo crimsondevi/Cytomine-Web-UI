@@ -23,7 +23,7 @@
       </vl-map>
     </div>
     <div class='buttonContainer'>
-      <button class='submitCompare'>
+      <button class='submitCompare' v-on:click="sendWinnerLoser(index)" >
         Choose 
      </button>
     </div>
@@ -33,6 +33,8 @@
 <script>
 import View from 'ol/View';
 import OverviewMap from 'ol/control/OverviewMap';
+
+import axios from 'axios';
 
 export default {
   name: 'CytomineImage',
@@ -104,6 +106,24 @@ export default {
       });
       this.$refs.map.$map.addControl(this.overview);
     },
+
+    
+    async sendWinnerLoser(index) {
+      if (index === 0) {
+        let winnerId = this.$parent.imageIds[0];
+        let loserId = this.$parent.imageIds[1];
+
+        await axios.post('http://127.0.0.1:5000/props/elo?winner=' + winnerId + '&loser=' + loserId);
+      } 
+      else {
+        let winnerId = this.$parent.imageIds[1];
+        let loserId = this.$parent.imageIds[0];
+
+        await axios.post('http://127.0.0.1:5000/props/elo?winner=' + winnerId + '&loser=' + loserId);
+      }
+      this.$parent.fetchNewImagesIds(); 
+    }
+
   },
   mounted() {
     this.setInitialZoom();

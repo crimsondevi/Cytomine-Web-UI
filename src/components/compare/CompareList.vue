@@ -73,7 +73,6 @@
           </b-table-column>
 
           <b-table-column label=" " centered width="150">
-              <!-- Change to a button that navigates to the project-id compare menu-->
             <router-link :to="`/project/${project.id}/compare`" class="button is-small is-link">
               <!-- {{$t('button-Compare')}} change to a translatable string -->
               Begin Compare

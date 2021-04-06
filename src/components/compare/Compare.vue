@@ -26,10 +26,10 @@
       </div>
 
       <div class="images">
-        <template v-for="(image, id, index) in images">
+        <template v-for="(id, index) in imageIds">
           <CompareImage
             :key="id"
-            :image="image"
+            :image="images[id]"
             :index="index"
           />
         </template>
@@ -46,8 +46,7 @@ import CompareImage from '@/components/compare/CompareImage.vue';
 
 import {ImageInstance} from 'cytomine-client';
 
-import axios from 'axios'
-import { postData, getData } from './requests';
+import axios from 'axios';
 
 export default {
   name: 'compare',
@@ -56,9 +55,10 @@ export default {
     CompareImage
   },
 
+  
   data() {
     return {
-      imageIds: [258, 8479],
+      imageIds: [],
       images: {},
       chosenImage: null,
       error: false,
@@ -72,31 +72,33 @@ export default {
   },
 
   methods: {
-    async fetchIds () {
-      let imgs = await axios.get('http://127.0.0.1:5000/get_images/244');
-      console.log(imgs.data)
-    },
-
-
     async fetchImages() {
- 
       try {
         await Promise.all(this.imageIds.map(async id => {
           let image = await ImageInstance.fetch(id);
           this.images[id] = image;
-        }));
+        })); 
         this.loading = false;
       }
       catch(err) {
         console.log(err);
         this.error = true;
       }
+    },
+
+    async fetchNewImagesIds() {
+      var test = await axios.get('http://127.0.0.1:5000/get_two_images/' + this.project.id);
+      this.imageIds[0] = (test.data['id_image1']);
+      this.imageIds[1] = (test.data['id_image2']);
+      await this.fetchImages();
+      this.$forceUpdate();
     }
+
   },
 
   async created() {
+    await this.fetchNewImagesIds();
     await this.fetchImages();
-    this.fetchIds();
   }
 
 };
